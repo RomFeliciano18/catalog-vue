@@ -5,7 +5,7 @@ import AppNav from './components/AppNav.vue';
 
 <template>
   <AppNav />
-  <main class="container-padding">
+  <main class="container-padding pb-24">
     <RouterView />
   </main>
 </template>
