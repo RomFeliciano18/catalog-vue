@@ -2,21 +2,22 @@
 import { useI18n } from 'vue-i18n';
 import { useRouter, useRoute } from 'vue-router';
 import MainButton from './MainButton.vue';
-import { ref, watch } from 'vue';
+import { computed } from 'vue';
 
 const { locale, availableLocales } = useI18n();
 const router = useRouter();
 const route = useRoute();
 
-const language = ref(locale.value);
-
-watch(language, (newLocale) => {
-  if (newLocale && availableLocales.includes(newLocale)) {
-    router.push({
-      name: route.name,
-      params: { ...route.params, locale: newLocale },
-    });
-  }
+const language = computed({
+  get: () => locale.value,
+  set: (newLocale) => {
+    if (availableLocales.includes(newLocale)) {
+      router.push({
+        name: route.name,
+        params: { ...route.params, locale: newLocale },
+      });
+    }
+  },
 });
 
 const getLabel = (loc) => {
