@@ -1,0 +1,19 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": true,
+  "overrides": [
+    {
+      "files": "*.vue",
+      "options": {
+        "htmlWhitespaceSensitivity": "ignore",
+        "vueIndentScriptAndStyle": false,
+        "printWidth": 900
+      }
+    }
+  ],
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
