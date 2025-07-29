@@ -37,7 +37,7 @@ const { locale } = useI18n();
 </template>
 
 <style scoped>
-.router-link-active {
+.active-link {
   @apply text-primary;
 }
 </style>
