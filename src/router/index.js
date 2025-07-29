@@ -1,23 +1,51 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import UploadLogo from '../views/UploadLogo.vue';
+import EnterEmail from '../views/EnterEmail.vue';
+import i18n from '@/i18n';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: '/:locale',
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: HomeView,
+        },
+        {
+          path: 'upload-logo',
+          name: 'upload-logo',
+          component: UploadLogo,
+        },
+        {
+          path: 'enter-email',
+          name: 'enter-email',
+          component: EnterEmail,
+        },
+      ],
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: '/:pathMatch(.*)*',
+      redirect: '/us',
     },
   ],
-})
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  const locale = to.params.locale;
+
+  if (!['us', 'ca', 'fr'].includes(locale)) {
+    return next('/us');
+  }
+
+  if (i18n.global.locale.value !== locale) {
+    i18n.global.locale.value = locale;
+  }
+
+  next();
+});
+
+export default router;

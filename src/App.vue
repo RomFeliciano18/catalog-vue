@@ -1,7 +1,13 @@
-<script setup></script>
+<script setup>
+import { RouterView } from 'vue-router';
+import AppNav from './components/AppNav.vue';
+</script>
 
 <template>
-  <h1 class="text-red-500">Vue Starter Pack with Node v20.9.0</h1>
+  <AppNav />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped></style>
