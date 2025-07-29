@@ -5,6 +5,7 @@ import { getLanguageAPI } from '@/utils/getLanguageApi';
 
 export const useLookbookStore = defineStore('lookbooks', () => {
   const lookbooks = ref([]);
+  const selectedLookbooks = ref([]);
   const { locale } = useI18n();
 
   const getLookbooks = async () => {
@@ -25,5 +26,5 @@ export const useLookbookStore = defineStore('lookbooks', () => {
     }
   };
 
-  return { lookbooks, getLookbooks };
+  return { lookbooks, selectedLookbooks, getLookbooks };
 });

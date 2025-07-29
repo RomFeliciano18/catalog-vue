@@ -3,10 +3,17 @@ import { useI18n } from 'vue-i18n';
 import { useRouter, useRoute } from 'vue-router';
 import MainButton from './MainButton.vue';
 import { computed } from 'vue';
+import { useLookbookStore } from '@/stores/lookbook';
 
 const { locale, availableLocales } = useI18n();
 const router = useRouter();
 const route = useRoute();
+
+const storeLB = useLookbookStore();
+
+const test = () => {
+  console.log(storeLB.selectedLookbooks);
+};
 
 const language = computed({
   get: () => locale.value,
@@ -37,7 +44,7 @@ const getLabel = (loc) => {
         {{ getLabel(loc) }}
       </option>
     </select>
-    <MainButton variant="secondary" class="text-white">Next</MainButton>
+    <MainButton @click="test" variant="secondary" class="text-white">Next</MainButton>
   </div>
 </template>
 
