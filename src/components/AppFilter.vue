@@ -11,8 +11,9 @@ const route = useRoute();
 
 const storeLB = useLookbookStore();
 
-const test = () => {
-  console.log(storeLB.selectedLookbooks);
+const handleGoToStep2 = () => {
+  if (!storeLB.selectedLookbooks.length) return alert('SELECT A LOOKBOOK BEFORE GOING TO STEP 2!');
+  router.push(`/${locale.value}/upload-logo`);
 };
 
 const language = computed({
@@ -44,7 +45,7 @@ const getLabel = (loc) => {
         {{ getLabel(loc) }}
       </option>
     </select>
-    <MainButton @click="test" variant="secondary" class="text-white">Next</MainButton>
+    <MainButton @click="handleGoToStep2" variant="secondary" class="text-white">Next</MainButton>
   </div>
 </template>
 

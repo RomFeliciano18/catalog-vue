@@ -20,7 +20,6 @@ export const useLookbookStore = defineStore('lookbooks', () => {
       });
 
       lookbooks.value = data;
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
