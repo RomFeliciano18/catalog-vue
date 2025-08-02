@@ -1,3 +1,8 @@
 {
-  "lang": "us"
+  "lang": "us",
+  "next": "Next",
+  "back": "Back",
+  "dragAndDrop": "Drop a file here to upload, or click to browse\n Supports file types: SVG, PNG, AI, EPS, PDF",
+  "dropFiles": "Drop the file here",
+  "uploadNote": "*Note: When uploading AI, EPS, PDF, or similar files, please ensure the content is properly vectorized to avoid conversion issues."
 }

@@ -1,3 +1,8 @@
 {
-  "lang": "fr"
+  "lang": "fr",
+  "next": "Suivant",
+  "back": "Précédent",
+  "dragAndDrop": "Déposez un fichier ici pour le télécharger ou cliquez pour parcourir.\nTypes de fichiers pris en charge : SVG, PNG, AI, EPS, PDF",
+  "dropFiles": "Déposez les fichier ici",
+  "uploadNote": "*Remarque: Lors du téléchargement de fichiers AI, EPS, PDF ou similaires, veuillez vous assurer que le contenu est correctement vectorisé afin d'éviter les problèmes de conversion."
 }

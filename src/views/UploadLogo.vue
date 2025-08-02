@@ -6,7 +6,7 @@ import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const storeLB = useLookbookStore();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 const inputRef = ref(null);
 const dropZoneRef = ref(null);
@@ -81,14 +81,14 @@ const test = () => {
 </script>
 
 <template>
-  <div class="mt-24 flex w-full flex-col items-center sm:min-h-[70vh] sm:justify-center">
+  <div class="flex w-full flex-col items-center sm:min-h-[65vh] sm:justify-center">
     <div class="relative flex w-full flex-col items-center gap-4 p-4 sm:max-w-3xl">
       <div @click="() => inputRef.click()" ref="dropZoneRef" class="flex h-80 min-w-96 cursor-pointer flex-col items-center justify-center rounded-lg border p-4 sm:w-[35vw]" :class="[isOverDropZone ? 'border-yellow-500' : 'border-neutral-500']">
         <template v-if="!processLogo.original && !isProcessing">
           <!-- <template v-if="false"> -->
           <i class="ri-image-ai-line text-4xl"></i>
-          <p v-if="isOverDropZone" class="w-96 text-center">Drop Files...</p>
-          <p v-else class="w-96 text-center" v-html="`DROP`"></p>
+          <p v-if="isOverDropZone" class="w-96 text-center">{{ t('dropFiles') }}...</p>
+          <p v-else class="w-96 text-center" v-html="t('dragAndDrop')"></p>
         </template>
 
         <div v-if="isProcessing" class="loader"></div>
@@ -117,12 +117,12 @@ const test = () => {
       <input type="file" ref="inputRef" accept="image/jpeg, image/png, image/svg+xml, application/pdf, application/postscript" class="hidden" @change="onFileInputChange" />
 
       <div class="absolute -bottom-40 flex flex-row items-center justify-center gap-4 pb-6 sm:-right-44 sm:bottom-auto sm:h-full sm:flex-col sm:pb-0">
-        <button class="w-40 sm:h-20 sm:w-52">Next</button>
-        <button @click="router.push(`/${locale}`)" class="w-40 sm:h-20 sm:w-52">Back</button>
+        <button class="w-40 sm:h-20 sm:w-52">{{ t('next') }}</button>
+        <button @click="router.push(`/${locale}`)" class="w-40 sm:h-20 sm:w-52">{{ t('back') }}</button>
       </div>
     </div>
 
-    <p class="max-w-3xl px-4 text-center text-sm sm:px-0 sm:text-base">Note</p>
+    <p class="max-w-3xl px-4 text-center text-sm sm:px-0 sm:text-base">{{ t('uploadNote') }}</p>
   </div>
 </template>
 
