@@ -1,4 +1,5 @@
 <script setup>
+import AppFilter from '@/components/AppFilter.vue';
 import LookbookCard from '@/components/LookbookCard.vue';
 import Modal from '@/components/Modal.vue';
 import ModalPreview from '@/components/ModalPreview.vue';
@@ -56,6 +57,7 @@ const previewUrl = computed(() => {
 </script>
 
 <template>
+  <AppFilter />
   <div class="mt-10 text-center">
     <div class="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
       <LookbookCard
@@ -74,8 +76,6 @@ const previewUrl = computed(() => {
     </div>
 
     <!-- Modals -->
-    <Modal :isOpenModal="storeModal.open" @close="storeModal.open = false"><h1>TEST</h1></Modal>
-
     <ModalPreview v-if="activeLookbook" :lookbook="activeLookbook" :url="previewUrl" @close="closeModal" />
   </div>
 </template>
